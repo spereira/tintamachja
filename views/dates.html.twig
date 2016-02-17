@@ -1,0 +1,33 @@
+{% extends "layout.html.twig" %}
+{% set dateMenu = true %}
+
+{% block title %}Planning 2016{% endblock %}
+
+{% block content %}
+<h2 class="text-center">{{ block('title') }}</h2>
+{% if dates %}
+        <div class="table-responsive">
+        <table class="table table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th>Date Arrivée </th>
+                    <th>Date Départ</th>
+                     <th>Locataire</th>
+                     <th>Nombre de personnes</th>
+                     <th>Prix location</th>
+                     <th>Arrhes</th>
+                    <th>Solde</th>
+                    <th>Forfait</th>
+                </tr>
+            </thead>
+            {% for date in dates %}
+   <td>{{ date.dateDeb }}</td>
+                    <td>{{ date.dateFin }}
+</tr>
+ {% endfor %}
+        </table>
+    </div>
+{% else %}
+   
+{% endif %}   
+{% endblock %}

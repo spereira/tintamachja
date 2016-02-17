@@ -1,0 +1,112 @@
+{% extends "layout.html.twig" %} {% set locataireMenu = true %} {% block title %}Nouveau locataire{% endblock %} 
+{% block content %}
+
+<h2 class="text-center">{{ block('title') }}</h2> 
+
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+<div class="well">
+{% if locForm %} 
+    {{ form_start(locForm, { 'attr': {'class': 'form-horizontal'} }) }}
+        <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Nom</label>
+            <div class="col-sm-5 col-md-4 ">
+            {{ form_errors(locForm.nom) }}
+                {{ form_widget(locForm.nom, { 'attr':  {
+                    'class': 'form-control'
+                }}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Prénom</label>
+            <div class="col-sm-5 col-md-4 ">
+            {{ form_errors(locForm.prenom) }}
+                {{ form_widget(locForm.prenom, { 'attr':  {
+                    'class': 'form-control'
+                }}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Rue</label>
+            <div class="col-sm-6 col-md-4 ">
+            {{ form_errors(locForm.rue) }}
+                {{ form_widget(locForm.rue, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Cp</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(locForm.cp) }}
+                {{ form_widget(locForm.cp, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+                <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Ville</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(locForm.ville) }}
+                {{ form_widget(locForm.ville, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+            <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Pays</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(locForm.pays) }}
+                {{ form_widget(locForm.pays, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+            <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Téléphone</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(locForm.tel) }}
+                {{ form_widget(locForm.tel, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+            <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Email</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(locForm.email) }}
+                {{ form_widget(locForm.email, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+            <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Commentaire</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(locForm.comLoc) }}
+                {{ form_widget(locForm.comLoc, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-md-offset-5 col-sm-3">
+                {{ form_row(locForm.ajouter, { 'attr':  {
+                    'class': 'btn btn-primary'
+                }}) }}
+            </div>
+        </div>
+    {{ form_end(locForm) }}
+</div>
+{% endif %}
+{% endblock %}

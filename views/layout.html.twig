@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ app.request.basepath }}/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ app.request.basepath }}/css/tinta.css" rel="stylesheet">
+    <title>TINTA_MACHJA - {% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-target">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ path('home') }}">TINTA MACHJA</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-collapse-target">
+ 
+
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown {% if locataireMenu is defined %}active{% endif %}">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">Les locataires <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('locataires') }}">Consulter</a></li>
+                               <li><a href="{{ path('loc_ajouter') }}">Ajouter</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                                     <ul class="nav navbar-nav">
+                        <li class="dropdown {% if villaMenu is defined %}active{% endif %}">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">Les villas <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('villas') }}">Consulter</a></li>
+                                <li><a href="{{ path('villa_ajouter') }}">Ajouter</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+					
+					                                     <ul class="nav navbar-nav">
+                        <li class="dropdown {% if equipementMenu is defined %}active{% endif %}">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">Les équipements <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('equipements') }}">Consulter</a></li>
+                                <li><a href="{{ path('equipement_ajouter') }}">Ajouter</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    
+                                                    <ul class="nav navbar-nav">
+                        <li class="dropdown {% if reservationMenu is defined %}active{% endif %}">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">Les réservations <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('reservations') }}">Consulter</a></li>
+                                <li><a href="{{ path('reservation_ajouter') }}">Ajouter</a></li>
+                                 <li><a href="{{ path('reservation_recherche') }}">Rechercher</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                                                        
+                                                         <ul class="nav navbar-nav">
+                        <li class="dropdown {% if villaMenu is defined %}active{% endif %}">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">Le planning<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('dates') }}">Consulter</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <!-- connexion -->
+                                       {% if app.user and is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="dropdown {% if visiteurMenu is defined %}active{% endif %}">
+                            <a href="" class="dropdown-toggle " data-toggle="dropdown"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Bienvenue, {{ app.user.prenom }} {{ app.user.nom }}<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('profil') }}">Profil</a></li>
+                                <li><a href="{{ path('logout') }}">Se déconnecter</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    {% else %}
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="dropdown {% if visiteurMenu is defined %}active{% endif %}">
+                            <a href="" class="dropdown-toggle " data-toggle="dropdown"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Non connecté <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('login') }}">Se connecter</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    {% endif %}
+                            </ul>
+                    
+                    
+
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+            <!-- /.container -->
+        </nav>
+        {% autoescape %}
+        <div id="content">{% block content %}{% endblock %}</div>
+        {% endautoescape %}
+    </div>
+
+    <!-- jQuery -->
+    <script src="{{ app.request.basepath }}/lib/jquery/jquery.min.js"></script>
+    <!-- JavaScript Boostrap plugin -->
+    <script src="{{ app.request.basepath }}/lib/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

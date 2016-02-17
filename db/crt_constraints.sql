@@ -1,0 +1,41 @@
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `correspond`
+--
+ALTER TABLE `correspond`
+  ADD CONSTRAINT `FK_CORRESPOND` FOREIGN KEY (`NUM_RESA`) REFERENCES `reservation` (`NUM_RESA`),
+  ADD CONSTRAINT `FK_CORRESPOND2` FOREIGN KEY (`CODE_SAISON`) REFERENCES `saison` (`CODE_SAISON`);
+
+--
+-- Contraintes pour la table `facture`
+--
+ALTER TABLE `facture`
+  ADD CONSTRAINT `FK_REFERENCE_9` FOREIGN KEY (`NUM_RESA`) REFERENCES `reservation` (`NUM_RESA`);
+
+--
+-- Contraintes pour la table `possede`
+--
+ALTER TABLE `possede`
+  ADD CONSTRAINT `FK_POSSEDE` FOREIGN KEY (`CODE_EQUI`) REFERENCES `equipement` (`CODE_EQUI`),
+  ADD CONSTRAINT `FK_POSSEDE2` FOREIGN KEY (`NUM_VILLA`) REFERENCES `villa` (`NUM_VILLA`);
+
+--
+-- Contraintes pour la table `reservation`
+--
+ALTER TABLE `reservation`
+  ADD CONSTRAINT `FK_AFFECTE` FOREIGN KEY (`CODE_FOR`) REFERENCES `forfait` (`CODE_FOR`),
+  ADD CONSTRAINT `FK_CORRESPOND_A` FOREIGN KEY (`NUM_VILLA`) REFERENCES `villa` (`NUM_VILLA`),
+  ADD CONSTRAINT `FK_EFFECTUE` FOREIGN KEY (`NUM_LOC`) REFERENCES `locataire` (`NUM_LOC`);
+
+--
+-- Contraintes pour la table `villa`
+--
+ALTER TABLE `villa`
+  ADD CONSTRAINT `FK_APPARTIENT` FOREIGN KEY (`CODE_TYVILLA`) REFERENCES `type_villa` (`CODE_TYVILLA`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

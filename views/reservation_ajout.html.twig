@@ -1,0 +1,174 @@
+{% extends "layout.html.twig" %} {% set reservationMenu = true %} {% block title %}Nouvelle réservation{% endblock %} 
+{% block content %}
+
+<h2 class="text-center">{{ block('title') }}</h2> 
+
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+<div class="well">
+{% if resaForm %} 
+    {{ form_start(resaForm, { 'attr': {'class': 'form-horizontal'} }) }}
+     <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Locataire</label>
+            <div class="col-sm-5 col-md-4 ">
+            {{ form_errors(resaForm.locataire) }}
+                {{ form_widget(resaForm.locataire, { 'attr':  {
+                    'class': 'form-control'
+                }}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Villa</label>
+            <div class="col-sm-5 col-md-4 ">
+            {{ form_errors(resaForm.villa) }}
+                {{ form_widget(resaForm.villa, { 'attr':  {
+                    'class': 'form-control'
+                }}) }}
+            </div>
+        </div>
+	        <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Forfait</label>
+            <div class="col-sm-5 col-md-4 ">
+            {{ form_errors(resaForm.forfait) }}
+                {{ form_widget(resaForm.forfait, { 'attr':  {
+                    'class': 'form-control'
+                }}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Date d'arrivée</label>
+            <div class="col-sm-5 col-md-4 ">
+            {{ form_errors(resaForm.dateA) }}
+                {{ form_widget(resaForm.dateA, { 'attr':  {
+                    'class': 'form-control',
+				'placeholder': 'sous la forme : "AAAA-MM-JJ"'
+                }}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Date de départ</label>
+            <div class="col-sm-5 col-md-4 ">
+            {{ form_errors(resaForm.dateD) }}
+                {{ form_widget(resaForm.dateD, { 'attr':  {
+                    'class': 'form-control',
+								'placeholder': 'sous la forme : "AAAA-MM-JJ"'
+                }}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Nombre de nuits</label>
+            <div class="col-sm-6 col-md-4 ">
+            {{ form_errors(resaForm.nbNuit) }}
+                {{ form_widget(resaForm.nbNuit, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Nombre de semaines</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(resaForm.nbSemaine) }}
+                {{ form_widget(resaForm.nbSemaine, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+            <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Nombre d'adultes</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(resaForm.NbAdulte) }}
+                {{ form_widget(resaForm.NbAdulte, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+            <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Nombre d'enfants</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(resaForm.NbEnfant) }}
+                {{ form_widget(resaForm.NbEnfant, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4,
+												'placeholder': '"VALIDEE" ou "EN ATTENTE"'
+                }}) }}
+            </div>
+        </div>
+            <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Etat de la réservation</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(resaForm.etat) }}
+                {{ form_widget(resaForm.etat, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+            <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Date de l'enregistrement de la réservation</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(resaForm.dateResa) }}
+                {{ form_widget(resaForm.dateResa, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4,
+								'placeholder': 'sous la forme : "AAAA-MM-JJ"'
+                }}) }}
+            </div>
+        </div>
+          <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Montant de la réservation</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(resaForm.montant) }}
+                {{ form_widget(resaForm.montant, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+                    <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Animaux Admis</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(resaForm.animauxAdmission) }}
+                {{ form_widget(resaForm.animauxAdmission, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4,
+								'placeholder': '"OUI" ou "NON"'
+                }}) }}
+            </div>
+        </div>
+          <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Coût des animaux</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(resaForm.montantAnimaux) }}
+                {{ form_widget(resaForm.montantAnimaux, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+                 <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Commentaires</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(resaForm.comResa) }}
+                {{ form_widget(resaForm.comResa, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-md-offset-5 col-sm-3">
+                {{ form_row(resaForm.ajouter, { 'attr':  {
+                    'class': 'btn btn-primary'
+                }}) }}
+            </div>
+        </div>
+    {{ form_end(resaForm) }}
+</div>
+{% endif %}
+{% endblock %}

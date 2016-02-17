@@ -1,0 +1,48 @@
+{% extends "layout.html.twig" %}
+{% set locataireMenu = true %}
+
+{% block title %}{{ locataire.nom }}{% endblock %}
+
+{% block content %}
+<h2 class="text-center">{{ block('title') }}</h2>
+<div class="well">
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Nom</label>
+            <div class="col-sm-9">
+                <p class="form-control-static">{{ locataire.nom }}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Prénom</label>
+            <div class="col-sm-9">
+            <p class="form-control-static">{{ locataire.prenom }}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Adresse</label>
+            <div class="col-sm-9">
+                <p class="form-control-static">{{ locataire.rue }}, {{ locataire.cp }}, {{ locataire.ville }}, {{ locataire.pays }}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Téléphone</label>
+            <div class="col-sm-9">
+                <p class="form-control-static">{{ locataire.tel }}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Email</label>
+            <div class="col-sm-9">
+                <p class="form-control-static">{{ locataire.email }}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Commentaire à propos du locataire</label>
+            <div class="col-sm-9">
+                <p class="form-control-static">{{ locataire.comLoc }}</p>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

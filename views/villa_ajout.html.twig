@@ -1,0 +1,143 @@
+{% extends "layout.html.twig" %} {% set villaMenu = true %} {% block title %}Nouvelle villa{% endblock %} 
+{% block content %}
+
+<h2 class="text-center">{{ block('title') }}</h2> 
+
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+<div class="well">
+{% if villaForm %} 
+    {{ form_start(villaForm, { 'attr': {'class': 'form-horizontal'} }) }}
+        <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Nom de la villa</label>
+            <div class="col-sm-5 col-md-4 ">
+            {{ form_errors(villaForm.nom) }}           {{ form_errors(villaForm.nom) }}
+                {{ form_widget(villaForm.nom, { 'attr':  {
+                    'class': 'form-control'
+                }}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Type de villa</label>
+            <div class="col-sm-5 col-md-4 ">
+            {{ form_errors(villaForm.typeVilla) }}
+                {{ form_widget(villaForm.typeVilla, { 'attr':  {
+                    'class': 'form-control'
+                }}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Ville</label>
+            <div class="col-sm-6 col-md-4 ">
+            {{ form_errors(villaForm.ville) }}
+                {{ form_widget(villaForm.ville, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Cp</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(villaForm.cp) }}
+                {{ form_widget(villaForm.cp, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+                <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Description de la villa</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(villaForm.description) }}
+                {{ form_widget(villaForm.description, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+            <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Details sur les pieces</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(villaForm.descriptionPiece) }}
+                {{ form_widget(villaForm.descriptionPiece, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+            <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Surface Habitable</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(villaForm.surfaceHabitable) }}
+                {{ form_widget(villaForm.surfaceHabitable, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+            <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Année de construction</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(villaForm.anneeConstruction) }}
+                {{ form_widget(villaForm.anneeConstruction, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+            <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Caution pour la Villa</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(villaForm.cautionVilla) }}
+                {{ form_widget(villaForm.cautionVilla, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+	            <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Caution pour les vélos</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(villaForm.cautionVelo) }}
+                {{ form_widget(villaForm.cautionVelo, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+		            <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Admission des animaux</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(villaForm.animauxAdmis) }}
+                {{ form_widget(villaForm.animauxAdmis, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4,
+												'placeholder': '"OUI" ou "NON"'
+                }}) }}
+            </div>
+        </div>
+			            <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Commentaire sur la villa</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(villaForm.comVilla) }}
+                {{ form_widget(villaForm.comVilla, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-md-offset-5 col-sm-3">
+                {{ form_row(villaForm.ajouter, { 'attr':  {
+                    'class': 'btn btn-primary'
+                }}) }}
+            </div>
+        </div>
+    {{ form_end(villaForm) }}
+</div>
+{% endif %}
+{% endblock %}

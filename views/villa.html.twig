@@ -1,0 +1,78 @@
+{% extends "layout.html.twig" %}
+{% set villaMenu = true %}
+
+{% block title %}{{ villa.nom }}{% endblock %}
+
+{% block content %}
+<h2 class="text-center">{{ block('title') }}</h2>
+<div class="well">
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Nom</label>
+            <div class="col-sm-9">
+                <p class="form-control-static">{{ villa.nom }}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Type de villa</label>
+            <div class="col-sm-9">
+            <p class="form-control-static">{{ villa.typeVilla.libelle }}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Lieu</label>
+            <div class="col-sm-9">
+                <p class="form-control-static">{{ villa.cp }}, {{ villa.ville }}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Description</label>
+            <div class="col-sm-9">
+                <p class="form-control-static">{{ villa.description }}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Description des Pièces</label>
+            <div class="col-sm-9">
+                <p class="form-control-static">{{ villa.descriptionPiece }}</p>
+            </div>
+        </div>
+                <div class="form-group">
+            <label class="col-sm-3 control-label">Surface Habitable</label>
+            <div class="col-sm-9">
+                <p class="form-control-static">{{ villa.surfaceHabitable }}</p>
+            </div>
+        </div>
+                <div class="form-group">
+            <label class="col-sm-3 control-label">Année de Construction</label>
+            <div class="col-sm-9">
+                <p class="form-control-static">{{ villa.anneeConstruction }}</p>
+            </div>
+        </div>
+                <div class="form-group">
+            <label class="col-sm-3 control-label">Caution de la villa</label>
+            <div class="col-sm-9">
+                <p class="form-control-static">{{ villa.cautionVilla }}</p>
+            </div>
+        </div>
+                <div class="form-group">
+            <label class="col-sm-3 control-label">Caution des vélos</label>
+            <div class="col-sm-9">
+                <p class="form-control-static">{{ villa.cautionVelo }}</p>
+            </div>
+        </div>
+                <div class="form-group">
+            <label class="col-sm-3 control-label">Admission des animaux</label>
+            <div class="col-sm-9">
+                <p class="form-control-static">{{ villa.animauxAdmis }}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Commentaire à propos de la villa</label>
+            <div class="col-sm-9">
+                <p class="form-control-static">{{ villa.comVilla }}</p>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

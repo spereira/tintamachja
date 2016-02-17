@@ -1,0 +1,75 @@
+{% extends "layout.html.twig" %} {% set equipementMenu = true %} {% block title %}Nouvel équipement{% endblock %} 
+{% block content %}
+
+<h2 class="text-center">{{ block('title') }}</h2> 
+
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+<div class="well">
+{% if equiForm %} 
+    {{ form_start(equiForm, { 'attr': {'class': 'form-horizontal'} }) }}
+        <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Code de l'équipement</label>
+            <div class="col-sm-5 col-md-4 ">
+            {{ form_errors(equiForm.id) }}
+                {{ form_widget(equiForm.id, { 'attr':  {
+                    'class': 'form-control',
+				'placeholder': 'example : "Par" pour parking'
+                }}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Libelle </label>
+            <div class="col-sm-5 col-md-4 ">
+            {{ form_errors(equiForm.libelle) }}
+                {{ form_widget(equiForm.libelle, { 'attr':  {
+                    'class': 'form-control'
+                }}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Description</label>
+            <div class="col-sm-6 col-md-4 ">
+            {{ form_errors(equiForm.description) }}
+                {{ form_widget(equiForm.description, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+
+                <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Prix de l'équipement</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(equiForm.prix) }}
+                {{ form_widget(equiForm.prix, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+            <div class="form-group">
+            <label class="col-sm-4 col-sm-offset-1 control-label">Commentaire</label>
+            <div class="col-sm-2 col-md-4 ">
+            {{ form_errors(equiForm.comEqui) }}
+                {{ form_widget(equiForm.comEqui, { 'attr':  {
+                    'class': 'form-control',
+                    'rows' : 4
+                }}) }}
+            </div>
+        </div>
+         
+         <div class="form-group">
+            <div class="col-sm-offset-4 col-md-offset-5 col-sm-3">
+                {{ form_row(equiForm.ajouter, { 'attr':  {
+                    'class': 'btn btn-primary'
+                }}) }}
+            </div>
+        </div>
+    {{ form_end(equiForm) }}
+</div>
+{% endif %}
+{% endblock %}
